@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="{{ url_for('static', filename='jquery-3.7.1.js')}}"></script>
+</head>
+  <body>
+    <div id="timer" data-url={{ url_for('loginForm') }}></div>
+    <div class="details">{{ name, regNo, subject }}</div>
+    <h2 id="Quest_number"><i>Question {{  quest_number }}</i></h2>
+    <p id="Question"><i>{{ question }}</i></p>
+    <input id="inputOption1" type="radio" class="quiz-option" name="opt" value="{{ options[0] }}" id="option1">
+    <label for="inputOption1"><i>{{ options[0] }}</i></label><br>
+
+    <input id="inputOption2" type="radio" class="quiz-option" name="opt" value="{{ options[1] }}" id="option2">
+    <label for="inputOption2"><i>{{ options[1] }}</i></label><br>
+
+    <input id="inputOption3" type="radio" class="quiz-option" name="opt" value="{{ options[2] }}" id="option3">
+    <label for="inputOption3"><i>{{ options[2] }}</i></label><br>
+
+    <input id="inputOption4" type="radio" class="quiz-option" name="opt" value="{{ options[3] }}" id="option4">
+    <label for="inputOption4"><i>{{ options[3] }}</i></label><br>
+    <div id="optdiv"></div>
+
+    <div>
+      <button value="Previous" id="previousButtton" name="btn" style="padding: 12px; margin-top:20px; display:none;">Previous</button>
+      <button  value="Submit" id="submitButton" onclick="reveal()" name="btn" style="padding: 12px; margin-top:20px; margin-left:35px; display:none;">Submit</button>
+      <button value="Next" id="nextButtton" name="btn" style="padding: 12px; margin-top:20px; margin-left:35px;">Next</button>
+    </div>
+    <div id="showList"></div>
+    {% block scripts %}
+      <script src="{{ url_for('static', filename='countdownTimer.js')}}"></script>
+    {% endblock scripts %}
+    <script>
+      function reveal() {
+        let lastAnswer = $('input[name="opt"]:checked').val();
+        $.ajax({
+          url: "/submit",
+          type: "POST",
+          data: {"last_answers": lastAnswer},
+          success: function (response) {
+            if(confirm(response.confirm)) {
+              console.log(`Dear user your score is ${response.score}`)
+              var url = document.getElementById('timer').getAttribute('data-url');
+              window.location.href = url;
+
+            }else{
+              return false
+            }
+          }
+        })
+      }
+    </script>
+    <script type="text/javascript">
+      let questIndex = 0;
+      console.log(questIndex);
+      $('#nextButtton').click(function() {
+        let selectedOpt = $('input[name="opt"]:checked').val();
+        var isBtnCreated = false;
+        $.ajax({
+          url: '/load_questions',
+          type: 'GET',
+          data: {quest_index: questIndex, selected_opt:selectedOpt},
+          success: function(response) {
+            if (response.question){
+              console.log(response.show_selected)
+              questIndex ++;
+              var questNum = questIndex +1;
+              $('#Question').text(response.question[0]);
+              let options = response.question[1];
+              $('#inputOption1').val(options[0]).next('label').text(options[0]);
+              $('#inputOption2').val(options[1]).next('label').text(options[1]);
+              $('#inputOption3').val(options[2]).next('label').text(options[2]);
+              $('#inputOption4').val(options[3]).next('label').text(options[3]);
+              $('#Quest_number').text(`Question ${questNum}`)
+
+              $('input[type=radio]').prop('name="opt"');
+
+              $('input[type=radio]').each(function() {
+                if ($(this).val() == response.show_selected) {
+                  $(this).prop('checked', true)
+                }else{
+                  $(this).prop('checked', false)
+                }
+              })
+              console.log(questNum);
+              if (questNum >= 2) {
+                $('#previousButtton').show();
+              }
+              if (questNum === {{ number_of_questions }}){
+                $('#nextButtton').hide();
+                $('#submitButton').show();
+              }
+                
+            } else if(questNum < 2){
+              $('#Question').text(response.message);
+            }
+          }
+        });
+      })
+
+      $('#previousButtton').click(function () {
+        let selectedOpt = $('input[name="opt"]:checked').val();
+        $.ajax({
+          url: '/load_pquestions',
+          type: 'GET',
+          data: {quest_index: questIndex, selected_opt: selectedOpt},
+          success: function(response) {
+            if (response.question){
+              console.log(response.show_selected)
+              questIndex --;
+              var questNum = questIndex + 1;
+              $('#Question').text(response.question[0]);
+              let options = response.question[1];
+              $('#inputOption1').val(options[0]).next('label').text(options[0]);
+              $('#inputOption2').val(options[1]).next('label').text(options[1]);
+              $('#inputOption3').val(options[2]).next('label').text(options[2]);
+              $('#inputOption4').val(options[3]).next('label').text(options[3]);
+              $('#Quest_number').text(`Question ${questNum}`)
+
+              $('input[type=radio]').each(function() {
+                if ($(this).val() == response.show_selected) {
+                  $(this).prop('checked', true)
+                }else{
+                  $(this).prop('checked', false)
+                }
+              })
+
+              if (questNum === 1) {
+                $('#previousButtton').hide();
+                $('#nextButtton').show();
+              }
+              if (questNum < 10){
+                $('#nextButtton').show();
+                $('#submitButton').hide();
+              }
+            }
+          }
+        })
+      })
+    </script>    
+  </body>
+</html>

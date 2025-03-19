@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="customAlert.css">
+    <title>MY custom notification</title>
+</head>
+<body>
+    <button onclick="performClick()" id="clcik">Click</button>
+    <button onclick="showError()" id="clcik">Error</button>
+    <div class="confirm-box" style="display: none;">
+        <h2 id="confirm-h2">Confirmation</h2>
+        <p id="confirm-p">Are you sure you want to submit?</p>
+        <div id="confirm-div">
+            <button onclick="success()" id="confirm-left-btn">Yes</button>
+            <button onclick="cancel()" id="confirm-right-btn">Cancel</button>
+        </div>
+    </div>
+    <div class="success-box" style="display: none;">
+        <h2 id="success-h2">Notification</h2>
+        <p id="success-p">Dear user you have submitted successfuully</p>
+        <div id="success-div">
+            <button onclick="cancel()" id="success-btn">Ok</button>
+        </div>
+    </div>
+    <div class="error-box" style="display: none;">
+        <h2 id="error-h2">Error</h2>
+        <p id="error-p">This operation was unsuccessful</p>
+        <div id="error-div">
+            <button onclick="cancel()" id="error-btn">Ok</button>
+        </div>
+    </div>
+    <div id="contents">
+    </div>
+    <script>
+        function performClick(){
+            let displayStatus = document.querySelector(".confirm-box").style.display;
+    
+            if (displayStatus === "none"){
+                document.querySelector("#contents").style.opacity = 0.1
+
+                document.querySelector(".confirm-box").style.display = "block"
+            } else{
+                document.querySelector(".confirm-box").style.display = "none"
+            }
+        }
+
+        function success(){
+            document.querySelector(".confirm-box").style.display = "none";
+            document.querySelector(".success-box").style.display = "block";
+        }
+
+        function cancel(){
+            document.querySelector(".confirm-box").style.display = "none";
+            document.querySelector(".success-box").style.display = "none";
+            document.querySelector(".error-box").style.display = "none";
+            document.querySelector("#contents").style.opacity = 1
+        }
+
+        function showError(){
+            document.querySelector("#contents").style.opacity = 0.1
+            document.querySelector(".error-box").style.display = "block";
+        }
+    </script>
+</body>
+</html>

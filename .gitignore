@@ -1,0 +1,14 @@
+.venv/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+static/fontawesome-free-6.7.1-web/
+static/fontawesome-free-5.15.4-web/
+static/image/
+static/image2/
+static/mathjax/

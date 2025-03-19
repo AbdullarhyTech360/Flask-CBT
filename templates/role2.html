@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .form-container {
+      width: 50%;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      margin-right: 20px;
+    }
+    .panel {
+      width: 50%;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .btn {
+      width: 100%;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2 class="text-center">Assign Role</h2>
+      <form id="roleForm">
+        <div class="form-group">
+          <label for="teacherName">Teacher Name</label>
+          <select class="form-control" id="teacherName">
+            <option>Select Teacher</>
+            <option>Teacher A</option>
+            <option>Teacher B</option>
+            <option>Teacher C</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="roleAssigned">Role Assigned</label>
+          <select class="form-control" id="roleAssigned">
+            <option>Select Role</option>
+            <option>Admin</option>
+            <option>Teacher</option>
+            <option>Student</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+      </form>
+    </div>
+    <div class="panel" id="teacherPanel">
+      <h2 class="text-center">Teachers & Roles</h2>
+      <ul id="teacherList"></ul>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById('roleForm');
+    const teacherPanel = document.getElementById('teacherPanel');
+    const teacherList = document.getElementById('teacherList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const teacherName = document.getElementById('teacherName').value;
+      const roleAssigned = document.getElementById('roleAssigned').value;
+
+      if(teacherName !== "Select Teacher" && roleAssigned !== "Select Role") {
+        const newTeacher = document.createElement("li");
+        newTeacher.textContent = `${teacherName} - ${roleAssigned}`;
+        teacherList.appendChild(newTeacher);
+      }
+    });
+  </script>
+</body>
+</html>

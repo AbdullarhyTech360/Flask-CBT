@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In Form</title>
+  <link rel="stylesheet" href="{{ url_for( 'static', filename='loginForm.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='customAlert.css') }}">
+  <link href="{{ url_for('static', filename='fontawesome-free-5.15.4-web/css/all.min.css')}}" rel="stylesheet">
+  <script src="{{ url_for('static', filename='jquery-3.7.1.js')}}"></script>
+</head>
+<body>
+  <div class="confirm-box" style="display: none;">
+    <h2 id="confirm-h2">Confirmation</h2>
+    <p id="confirm-p">Are you sure you want to submit?</p>
+    <div id="confirm-div">
+        <button onclick="success()" id="confirm-left-btn">Yes</button>
+        <button onclick="ok()" id="confirm-right-btn">Cancel</button>
+    </div>
+  </div>
+  <div class="success-box" style="display: none;">
+      <h2 id="success-h2">Notification</h2>
+      <p id="success-p">Dear user you have submitted successfuully. You are now among the registered users</p>
+      <div id="success-div">
+          <button onclick="cancel()" id="success-btn">Ok</button>
+      </div>
+  </div>
+  <div class="error-box" style="display: none;">
+      <h2 id="error-h2">Error</h2>
+      <p id="error-p">This operation was unsuccessful</p>
+      <div id="error-div">
+          <button onclick="ok()" id="error-btn">Ok</button>
+      </div><p></p>
+  </div>
+  <div class="contents">
+    <div class="header">
+      <div class="logo">
+        <img src="{{ url_for( 'static', filename='khulafau Logo.jpg')}}" alt="Alhikma School Logo">
+        <h1><i><span id="schoolName">KHULAFA'U  INTERNATIONAL SCHOOL</span><br> <span id="schoolName2">Nursery, Primary and Secondary School</span> <br> <span id="address">No. 53 Jae Road, Shika-Zaria</span><br> <span id="motto">MOTTO: KNOWLEDGE AND MORALITY</span></i></h1>
+      </div>
+    </div>
+    <div class="userImage">
+      <img src="{{ url_for( 'static', filename='userImage.jpg')}}" alt="userImage">
+    </div>
+    <div class="form-container">
+      <h2>Sign In</h2>
+      <form autocomplete="on" action="main_quiz.py" method="POST">
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+              <span class="show-password" onclick="togglePassword()"><i id="eyeIcon" class="fa fa-eye-slash"></i></span>
+          </div>
+          <div id="subject-container" class="form-group">
+              <label for="subject">Subject</label>
+              <select name="subject" id="subject">
+                <option value="" selected disabled>Select Subject</option>
+                {% for subject in subject_list  %}
+                  <option value="{{ subject[1] }}">{{ subject[1].replace('_', ' ') }} - {{ subject[0].replace('_', ' ') }}</option>
+                {% endfor %}
+              </select>
+          </div>
+          <button type="submit" name="login" value="Login" class="btn">Sign In</button>
+          <div class="bottom-container"><small>Don't have an account? <a href="register">Sign up</small></a></div>
+      </form>
+    </div>
+  </div>
+<script>
+  function togglePassword() {
+    const passwordField = document.getElementById('password');
+    var eyeIcon = document.getElementById('eyeIcon');
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      eyeIcon.classList.add("fa-eye");
+      eyeIcon.classList.remove("fa-eye-slash");
+    } else {
+      passwordField.type = 'password';
+      eyeIcon.classList.remove("fa-eye");
+      eyeIcon.classList.add("fa-eye-slash");
+    }
+  }
+
+  function ok(){
+      document.querySelector(".confirm-box").style.display = "none";
+      document.querySelector(".success-box").style.display = "none";
+      document.querySelector(".error-box").style.display = "none";
+      document.querySelector(".contents").style.opacity = 1
+    }
+
+    function cancel(){
+        document.querySelector(".confirm-box").style.display = "none";
+        document.querySelector(".success-box").style.display = "none";
+        document.querySelector(".error-box").style.display = "none";
+        document.querySelector(".contents").style.opacity = 1
+
+        location.reload();
+    }
+
+</script>
+<script>
+  $(document).ready(function(){
+    $('.btn').click(function(event){
+      event.preventDefault();
+      let loginPassword = document.querySelector("#password").value;
+      let username = document.querySelector("#username").value;
+      let selectSubject = document.querySelector("#subject").value;
+
+      $.ajax({
+        url: "/handle_login",
+        type: "POST",
+        data:  {
+          "username":username,
+          "password": loginPassword,
+          "subject": selectSubject
+        },
+        success: function (response) {
+          console.log(response)
+          if (response.quiz) {
+            window.location.href = response.quiz;
+          } else if (response.staff) {
+            window.location.href = response.staff;
+          }else if (response.message) {
+            window.location.href = response.message;
+          }
+          else{
+            console.log(response)
+            let objectKey = Object.keys(response)[0];
+            
+            let shownBox = "." + objectKey + "-box";
+            let shownPara = "#" + objectKey + "-p";
+
+            $(shownBox).show();
+
+            for(let attribute in response) {
+              let value = response[attribute];
+              $(shownPara).text(value);
+            }
+            document.querySelector(".contents").style.opacity = 0.1
+          }
+        }
+      })
+    })
+  })
+</script>
+</body>
+</html>

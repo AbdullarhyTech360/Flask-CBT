@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #64b5f6, #1976d2);
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.admin-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+a.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.button-query {
+    background: linear-gradient(135deg, #FF6B6B, #FFA07A);
+}
+
+.button-permissions {
+    background: linear-gradient(135deg, #B39CD0, #7E57C2);
+}
+
+.button-settings {
+    background: linear-gradient(135deg, #81D4FA, #4FC3F7);
+}
+
+.button-upload {
+    background: linear-gradient(135deg, #66BB6A, #43A047);
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button-school{
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.button-role{
+    background: linear-gradient(135deg, #FF8C00, #FF6347);
+}
+
+@media screen and (width: 425px){
+    /* body{
+        font-size: 300px !important;
+        /* #1976d2 */
+        /* background: linear-gradient(135deg, #64b5f6, #1976d2) no-repeat;
+        min-zoom: 200% !important;
+        box-sizing: border-box !important;
+    } */ 
+    h1{
+        color: #1976d2 !important;
+    }
+}

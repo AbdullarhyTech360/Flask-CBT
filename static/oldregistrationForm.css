@@ -1,0 +1,54 @@
+
+h3{
+  text-align: center;
+  border-bottom: 1px solid #46a062;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-family: "Verdana", "Geneva", sans-serif;;
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  /* font-size: 1px !important; */
+  color: white;
+  background-color: maroon;
+  width: 100% !important;
+  margin-top: 0px !important;
+  padding: 15px;
+  margin: 0px !important;
+}
+
+label{
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  color: maroon;
+}
+
+form{
+  width: 80%;
+  margin: auto;
+  margin-top: 5px;
+  border: 1px solid maroon;
+  border-radius: 15px;
+  margin-bottom: 17px;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+#button{
+  color: maroon;
+  border: 1px solid maroon;
+}
+
+#button:hover{
+  color: #fff;
+  background-color: rgba(128, 0, 0, 0.924);
+}
+
+/* #image-id{
+  text-decoration: none;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+} */

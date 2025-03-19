@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-5.15.4-web/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='registrationForm.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='customAlert.css') }}">
+</head>
+<body>
+	<div class="confirm-box" style="display: none;">
+    <h2 id="confirm-h2">Confirmation</h2>
+    <p id="confirm-p">Are you sure you want to submit?</p>
+    <div id="confirm-div">
+        <button onclick="success()" id="confirm-left-btn">Yes</button>
+        <button onclick="ok()" id="confirm-right-btn">Cancel</button>
+    </div>
+  </div>
+  <div class="success-box" style="display: none;">
+      <h2 id="success-h2">Notification</h2>
+      <p id="success-p">Dear user you have submitted successfuully. You are now among the registered users</p>
+      <div id="success-div">
+          <button onclick="cancel()" id="success-btn">Ok</button>
+      </div>
+  </div>
+  <div class="error-box" style="display: none;">
+      <h2 id="error-h2">Error</h2>
+      <p id="error-p">This operation was unsuccessful</p>
+      <div id="error-div">
+          <button onclick="ok()" id="error-btn">Ok</button>
+      </div>
+  </div>
+  <div class="large-container">
+    <div class="bigger-div">
+        <div class="container">
+            <h1>User Registration Form</h1>
+            <form id="my-form" action="main_quiz.py" method="post">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="Name" name="f_name" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="Surname" name="s_name" id="surname" placeholder="Enter your surname" required>
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" name="m_name" id="MiddleName" placeholder="Enter your middle name">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" name="dob" id="datepicker" required>
+                </div>
+                <div mt-3 class="form-group">
+                    <label for="imageUpload">Upload image</label>
+                    <a id="image-id" href="upload">Upload Image</a>
+                </div>
+                <div class="form-group">
+                    <label for="userType">Select user type</label>
+                    <select name="userType" id="userType" required>
+                      <option value="" disabled selected>USER TYPE</option>
+                      <option value="STUDENT">STUDENT</option>
+                      <option value="TEACHER">STAFF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="class">Select class</label>
+                    <select name="classes" id="class" required>
+                      <option value="" disabled selected>Select class</option>
+                      <option id="classgroup" value="PRIMARY_4">PRIMARY 4</option>
+                      <option id="classgroup" value="PRIMARY_5">PRIMARY 5</option>
+                      <option id="classgroup" value="JSS_1">JSS 1</option>
+                      <option id="classgroup" value="JSS_2">JSS 2</option>
+                      <option id="classgroup" value="JSS_3">JSS 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regNo" class="form-label">Registration number</label>
+                    <input type="number" id="regNo" class="form-control emailcont" placeholder="Your register number in class" name="regno">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="create-password" name="crpass" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" name="cnpass" id="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group">
+                    <button id="submit-btn" type="submit"><i class="fas fa-user-plus"></i>Register</button>
+                </div>
+                <div class="anchor-group form-group">
+                    Already have account? <a href="/" >Sign in now</a>
+                </div>
+            </form>
+            
+        </div>
+      </div>
+  </div>
+    <script src="{{ url_for('static', filename='jquery-3.7.1.js')}}"></script>
+    <script type="text/javascript">
+        function ok(){
+            document.querySelector(".confirm-box").style.display = "none";
+            document.querySelector(".success-box").style.display = "none";
+            document.querySelector(".error-box").style.display = "none";
+            // document.querySelector(".container").style.opacity = 1
+            document.querySelector(".bigger-div").style.background = 'linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4)';
+            document.querySelector(".bigger-div").style.opacity = 1;
+        }
+
+        function cancel(){
+            document.querySelector(".confirm-box").style.display = "none";
+            document.querySelector(".success-box").style.display = "none";
+            document.querySelector(".error-box").style.display = "none";
+            // document.querySelector(".container").style.opacity = 1
+            document.querySelector(".bigger-div").style.background = 'linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4)';
+            document.querySelector(".bigger-div").style.opacity = 1;
+            location.reload();
+        }
+
+        $(document).ready(function () {
+            $("#my-form").submit(function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('Name').value;
+            const surname = document.querySelector('#Surname').value;
+            const classes = document.querySelector('#class').value;
+            const middleName = document.querySelector('#MiddleName').value;
+            const gender = document.querySelector('#gender').value;
+            const dob = document.querySelector('#datepicker').value;
+            const regNo = document.querySelector('#regNo').value;
+            let createpassword = document.querySelector('#create-password').value;
+            let confirmpassword = document.querySelector('#confirm-password').value;
+            let userType = document.querySelector("#userType").value;
+            
+            $.ajax({
+                url: "/process_registeration",
+                type: "POST",
+                data: {
+                    "firstName": firstName, 
+                    "surname": surname, 
+                    "middleName": middleName, 
+                    "classes": classes,
+                    "gender": gender, 
+                    "dob": dob, 
+                    "regNo": regNo, 
+                    "createpassword": createpassword, 
+                    "confirmpassword": confirmpassword, 
+                    "userType": userType
+                },
+                success: function (response){
+                
+                let objectKey = Object.keys(response)[0];
+                
+                let shownBox = "." + objectKey + "-box";
+                let shownPara = "#" + objectKey + "-p";
+                console.log(shownBox);
+                $(shownBox).show();
+                $(shownBox).backgroundColor = "white";
+                for(let attribute in response) {
+                    let value = response[attribute];
+                    $(shownPara).text(value);
+                }
+                document.querySelector(".bigger-div").style.backgroundColor = '#fff';
+                document.querySelector(".bigger-div").style.opacity = 0.6;
+                }
+            })
+            })
+        })
+    </script>
+</body>
+</html>

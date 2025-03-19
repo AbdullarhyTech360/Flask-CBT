@@ -1,0 +1,10 @@
+{"banks":[["percentage mean_______",["100","10000", "1000","none of the options"],"100"],
+["change 25% to decimal", ["0.25","0.025","02.5","none of the options"],"0.25"],
+["change 7% to decimal",["0.07","00.7","0.7","7.0"],"0.07"],
+["find the square of 2",["4","6","8","10"],"4"],
+["what is the square of 3",["6","9","15","4"],"9"],
+["The square 5 is______",["25","10","20","15"],"25"],
+["find the area of a rectangle whose length is 7cm and the breadth is 5cm",["35","30","33","75"],"35" ],
+["Convert N20 to kobo", ["20k", "200k", "222k", "none of the options"], "200k"],
+["Convert N17.50 to kobo", ["1750k", "17500k", "175k", "none of the options"], "200k"],
+["Find the square root of 4", ["2", "8", "7", "9"], "2"]]}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <link href="{{ url_for('static', filename='fontawesome-free-5.15.4-web/css/all.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='role.css') }}">
+  <!-- <label for=""></label> -->
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2 class="text-center">ASSIGN ROLE</h2>
+      <form method="post">
+        <div class="form-group">
+          <label for="teacherName">TEACHER NAME</label>
+          <select required name="teacherName" class="form-control" id="teacherName">
+            <option selected disabled>Select Teacher</option>
+            {% if teachers_names %}
+              {% for teacher_name in teachers_names %}
+                <option value="{{ teacher_name }}">{{ teacher_name }}</option>
+              {% endfor %}
+            {% endif %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="roleAssigned">SELECT SUBJECT</label>
+          <select required name="roleAssigned" class="form-control" id="roleAssigned">
+            <option selected disabled>Select Role</option>
+            {% if subjects %}
+              {% for subject in subjects %}
+                <option value="{{ subject.upper() }}">{{ subject.upper().replace("_", " ") }}</option>
+              {% endfor %}
+            {% endif %}
+            <option value="FORM_MASTER">FORM MASTER</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="class">SELECT CLASS</label>
+          <select required class="form-control" name="class" id="class">
+            <option value="" selected disabled>SELECT CLASS</option>
+            {% for class in shool_classes %}
+              <option value="{{ class.upper() }}">{{ class.upper().replace("_", " ") }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+      </form>
+    </div>
+    <div class="panel">
+      <h2 class="text-center">Teachers & Roles</h2>
+      <ul id="teacherList">
+        {% if role_details %}
+          {% for role_detail in role_details %}
+            <li>{{ role_detail[1] }} - {{ role_detail[2].replace("_", " ") }} - {{ role_detail[-2].replace("_", " ").upper() }}</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  <div>
+    <a href="/admin" class="back-btn btn btn-danger"> <i class="icon fas fa-sign-out-alt"></i> Go back</a>
+  </div>
+</body>
+</html>

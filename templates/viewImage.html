@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='imageUpload.css')}}">
+</head>
+<body style="width: 50%; margin:auto; margin-top: 10%;">
+    <h3>Hello, you can now upload your image</h3>
+    <div id="container">
+        <form method="post" enctype="multipart/form-data">
+            <label for="username">Username</label>
+            <input name="username" type="text" placeholder="Enter your username">
+            <img src="data:image/jpeg;base64,{{ image }}" alt="image">
+            <input id="submitbtn" type="submit" value="Upload image">
+        </form>
+    </div>
+</body>
+</html>

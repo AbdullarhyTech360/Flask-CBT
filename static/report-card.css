@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: max-content;
+    border-collapse: collapse;
+    margin-top: -4px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+h2{
+    text-align: center;
+}
+.container{
+    margin: auto;
+    max-width: 800px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.info{
+    margin-top: 0px !important;
+    font-size: 12.5px;
+    text-align: left;
+
+}
+#main-info{
+    height: 150px;
+    display: flex;
+    width: 827px;
+}
+
+.infos{
+    margin: auto;
+    /* padding-left: px; */
+    /* padding-left: 6px; */
+}
+
+#first-infos{
+    margin-left: 1px;
+}
+
+#first-infos, .infos{
+    /* margin-left: 5px; */
+    width: max-content;
+}
+
+.comments{
+    display: flex;
+    width: max-content;
+    margin-top: 40px;
+}
+
+.sig-date{
+    margin-left: 225px !important;
+}
+
+#last-p{
+    text-align: center;
+    margin-top: 40px;
+}
+
+#image-box{
+    border: 1px solid #000;
+    width: 150px;
+    height: 140px;
+    /* margin-left: 15px; */
+    margin-left: -12px !important;
+}
+
+img{
+    align-items: center;
+    width: 150px;
+    height: 140px;
+}
+
+.school-heading{
+    display: inline-flex;
+    border: 3px solid;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-left: 15px;
+
+}
+
+.school-info{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.school-logo{
+    margin-top: 4px;
+}
+#school-name{
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-align: right;
+}
+
+#categories{
+    display: block;
+    font-size: 25px;
+    letter-spacing: 3px;
+    word-spacing: 7px;
+    text-align: right;
+
+}
+
+#address{
+    display: block;
+    font-size: 20px;
+    letter-spacing: 3.5px;
+    font-stretch: extra-expanded;
+    word-spacing: 8px;
+    text-align: right;
+
+}
+
+#motto{
+    display: block;
+    font-size: 15px;
+    text-align: right;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+}
+
+.total{
+    padding-left: 8px;
+    font-weight: bold;
+}
+
+.upper{
+    margin-top: 4px;
+}
+
+.term-begin{
+    text-align: center;
+    width: 50%;
+    margin-left: 280px;
+    position: absolute;
+    margin-top: -34px !important;
+}

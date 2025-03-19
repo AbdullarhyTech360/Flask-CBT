@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adminPage.css') }}">
+</head>
+<body>
+    <div class="topContainer">
+        <div class="heading"><h1 class="classhead">AL-HIKMAH ACADEMY</h1>
+            <p class="classpara">Nursey Primary and Secondary School
+            Imam Road Unguwan Katsinawa Shika</p>
+        </div>
+        <a href="/">Logout</a>
+    </div>
+    <div class="avatarCont">
+        <img src="{{ url_for('static', filename='avatarc.jpg') }}" alt="Your Photo Here">
+    </div>
+    <div class="contents">
+        <form action="/admin" method="POST">
+            <p>PLEASE SELECT ONE AMONG THE FOLLOWING BELOW</p>
+            <button type="submit" value="assigning_role" id="assigning_role" name="btn" class="leftbtn" >Assigning role</button>
+            <button type="submit" value="exam_settings" id="exam_settings" name="btn" class="leftbtn">Exam settings</button>
+            <button type="submit" value="making_query" id="making_query" name="btn" class="rightbtn">Making query</button>
+            <button type="submit" value="permissions" id="permissions" name="btn" class="rightbtn">Permissions</button>
+            <button type="submit" value="uploading_questions" id="uploading_questions" name="btn" class="downbtn">Uploading questions</button>
+        </form>
+    </div>
+</body>
+</html>

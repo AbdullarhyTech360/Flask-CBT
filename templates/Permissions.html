@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Permissions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Permissions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-5.15.4-web/css/all.min.css') }}">
+    <script src="{{ url_for('static', filename='jquery-3.7.1.js')}}"></script>
+</head>
+<body>
+    <h1>Hi Welcome to permissions page</h1>
+    <div class="container">
+      <i class="user icon fas fa-user-circle"></i>
+        <form action="/admin/Permissions" method="post">
+            <div id="status" style="display: none;">Permission granted successfully</div>
+            <div class="mainContents">
+                <div class="form-group">
+                    <label class="form-label mt-3" for="session">Exam session(hrs)</label><br>
+                    <input value="4" type="number" class="form-control p-2" name="session" id="session">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Enrollment</label><br>
+                    <select class="form-control" name="enrollment" id="enrollment">
+                        <option value="allow">Allow</option>
+                        <option selected value="deny">Deny</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Uploading scores</label>
+                    <select class="form-control" name="uploadingResuls" id="uploadingResuls">
+                        <option value="allow">Allow</option>
+                        <option selected value="deny">Deny</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Uploading attendance</label>
+                    <select class="form-control" name="uploadingAttendance" id="uploadingAttendance">
+                        <option value="allow">Allow</option>
+                        <option selected value="deny">Deny</option>
+                    </select>
+                </div>
+            </div>
+            <div class="btn-container mt-4">
+                <button type="submit" class="rightbtn btn btn-success"> <i class="fas fa-save"></i> Save changes</button>
+                <a href="/admin" class="leftbtn btn btn-danger"> <i class="fas fa-sign-out-alt"></i> Go Back</a href="/">
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(".rightbtn").click(function(event){
+            event.preventDefault();
+            let examTime = $("#session").val();
+            let enroll = $("#enrollment").val();
+            let uploadResult = $("#uploadingResuls").val();
+            let uploadAttendance = $("#uploadingAttendance").val();
+            console.log(enroll)
+            console.log(uploadAttendance)
+            console.log(uploadResult)
+            console.log(examTime)
+
+            $.ajax({
+                url:"/handle_permissions",
+                type: "POST",
+                data: {
+                    session: examTime, 
+                    enroll:enroll,
+                    upload_result: uploadResult,
+                    upload_attendance: uploadAttendance
+                },
+                success: function(response){
+                    console.log(response.success)
+                    $('#status').text(response.success).toggle().delay(2000).fadeOut();
+                }
+            })
+        })
+    </script>
+</body>
+</html>

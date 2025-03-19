@@ -1,0 +1,314 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    background-color: #fff;
+    /* padding: 10px 20px; */
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    text-align: right;
+    height: 35%;
+    border: 2px solid rgba(32, 115, 222, 0.286);
+}
+
+.userImage img{
+    width: 68px !important;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.userImage{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    /* align-items: center */
+}
+
+.content{
+    max-width: 100vh !important;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 15% !important;
+}
+
+.logo img {
+    width: 20vh !important;
+    height: 20vh !important;
+    /* min-height: 90px !important; */
+    margin-right: 10px;
+    margin-top: 1px !important;
+    margin-left: 7px;
+}
+
+.logo h1{
+    width: 70%;
+    margin: auto;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.286);
+    width: 50vh;
+    padding-right: 0 !important;
+    /* min-width: 60vh; */
+    height: 65vh;
+    margin: auto;
+    
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 90px;
+    font-size: 17px;
+    margin-right: 15px !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.form-group input{
+    width: 85%;
+    padding: 6.5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group select{
+    width: 85%;
+    box-sizing: content-box;
+    padding: 6.5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type='password']:focus, input[type='text']:focus{
+    border: 2px solid #3c9eef;
+}
+
+.form-group select {
+    appearance: none;
+}
+
+.show-password {
+    position: absolute;
+    top: 70%;
+    right: 15px;
+    transform: translateY(-45%);
+    margin-right: 20px;
+    cursor: pointer;
+    opacity: 0.5 !important;
+}
+
+.btn {
+    display: block;
+    width: 85%;
+    box-sizing: content-box;
+    padding: 8px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #6ea6e1;
+}
+.bottom-container{
+    margin-top: 3%;
+    font-size: 0.8em;
+}
+
+.bottom-container a{
+    text-decoration: none;
+    color: #007bff;
+}
+
+#schoolName{
+    font-size: 120% !important;
+    /* color: #fff; */
+}
+
+#address{
+    font-size: 30px;
+    font-stretch: expanded;
+    letter-spacing: 2px;
+}
+#motto{
+    font-size: 20px;
+    margin-top: 20px !important;
+}
+
+h1{
+    color: rgb(9, 8, 8);
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-top: 0px;
+    background-color: #91EAE4;
+    /* background-color: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4) !important; */
+}
+
+
+@media only screen and (max-width: 576px) {
+    /* CSS styles for phones */
+
+    body{
+        background: linear-gradient(to right, #55a0ef, #91eae4);
+    }
+
+    .form-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.286);
+        width: 270px !important;
+        height: 80%;
+        margin: auto;
+    }
+    
+    .header, .logo{
+        height: 100px;
+    }
+
+    .content{
+        width: 300px !important;
+    }
+
+    .userImage img{
+        width: 70px !important;
+        position: absolute;
+        margin: auto !important;
+        background-color: #8ab8db !important;
+        left: 42%;
+        margin-top: 6vh !important;
+    }
+    
+    .userImage{
+        width: 50%;
+        margin: auto;
+    }
+
+    .logo h1{
+        height: fit-content;
+        font-size: 10px;
+        padding: 10px;
+        width: 70%;
+    }
+
+    #address, #motto{
+        font-size: 10px !important;
+    }
+
+    .logo img{
+        height: 60px !important;
+        /* max-height: 25px !important; */
+        width: 60px !important;
+        margin-top: 60px !important;
+    }
+
+    #schoolName{
+        font-size: 100% !important;
+        /* color: #fff; */
+    }
+    
+    #address{
+        font-size: 100% !important;
+        font-stretch: expanded;
+        letter-spacing: 0px;
+    }
+
+    #schoolName2{
+        font-size: 90%;
+    }
+
+    #motto{
+        font-size: 65% !important;
+        margin-top: 20px !important;
+    }
+    
+    .header{
+        height: 80px;
+        width: 90%;
+    }
+
+    #subject-container{
+        display: none;
+    }
+}
+
+/* / Styles for Medium Devices (small laptops/desktops) / */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    /* / CSS styles for small laptops/desktops / */
+
+    .logo h1{
+        height: fit-content;
+        font-size: 23px;
+        padding: 10px;
+        width: 70%;
+        padding-left: 2px !important;
+    }
+    
+    .logo img{
+        width: 110px !important;
+        height: 110px !important;
+    }
+
+    #schoolName{
+        font-size: 100% !important;
+        /* color: #fff; */
+    }
+
+    #schoolName2{
+        font-size:90%;
+    }
+
+    #motto{
+        font-size: 65% !important;
+        margin-top: 20px !important;
+    }
+
+    #address{
+        font-size: 95% !important;
+        font-stretch: expanded;
+        letter-spacing: 2px;
+    }
+
+    .userImage img{
+        width: 90px !important;
+        position: absolute;
+        margin: auto !important;
+        background-color: #8ab8db !important;
+        left: 345px;
+        margin-top: 5vh !important;
+    }
+}

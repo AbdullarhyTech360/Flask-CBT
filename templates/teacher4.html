@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #86A8E7, #91EAE4);
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .welcome-msg {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .teacher-details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .teacher-details img {
+      border-radius: 50%;
+      width: 100px;
+      margin-right: 20px;
+    }
+    .teacher-details .username {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      text-align: center;
+      background: #26a69a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #2bbbad;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="welcome-msg">Welcome, Teacher John Doe!</p>
+    <div class="teacher-details">
+      <img src="teacher-image.jpg" alt="Teacher's image">
+      <div>
+        <span class="username">John Doe</span>
+        <p>Username: johndoe123</p>
+      </div>
+    </div>
+    <button class="btn"><i class="fas fa-edit"></i> Input Scores</button>
+    <button class="btn"><i class="fas fa-list"></i> Check Scores</button>
+    <button class="btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+</body>
+</html>

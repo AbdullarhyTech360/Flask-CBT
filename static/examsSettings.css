@@ -1,0 +1,135 @@
+/* .settingClass{
+    border: 1.5px solid #000;
+    border-radius: 0px 10px;
+    width: 70%;
+    margin: auto;
+    height: 210% !important;
+    min-height: 200%;
+} */
+
+/* h2{
+    font-family: serif;
+    width: 50%;
+    margin: auto;
+    margin-left: 50%;
+    margin-top: 2%;
+} */
+
+/* h3{
+    text-align: center;
+    width: 100%;
+    border-bottom: 1.5px solid #000;
+    color: #fff;
+    margin-top: 1% !important;
+    margin-bottom: 2% !important;
+    font: 1.5em sans-serif;
+} */
+
+/* label, select{
+    margin-bottom: 1.5% !important;
+    font:1em sans-serif;
+} */
+
+/* #sClass, #sSubject{
+    margin-left: 15%;
+} */
+
+/* #nQuestions, #mpQuestion, #duration, #testType{
+    margin-left: 15%;
+} */
+
+
+/* button{
+    text-decoration: none;
+    margin: 2%;
+    padding: 5px !important;
+    border: 1px solid #d6a7a7;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #4cc978;
+    font-weight: bolder;
+} */
+
+/* #rightBtn{
+    margin-left: 30% !important;
+} */
+
+body{
+    background: linear-gradient(to right, #4667e8, #35dcef, #0ff4ca);
+}
+
+*{
+    font-family: sans-serif;
+}
+
+#alertid{
+    width: 80% !important;
+}
+
+.settingClass{
+    margin-top: 10px;
+    width: 500px;
+    height: max-content;
+    /* border: 1px solid #000; */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.254);
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}                           
+
+.hide{
+    display: none;
+  }
+
+.appear{
+    display: block;
+}
+select{
+    width: 80% !important;
+    margin-left: 8px !important;
+}
+
+label{
+    margin-left: 10px;
+}
+
+.container{
+    width: 500px !important;
+}
+
+#sClass{
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.functionDiv{
+    width: 100%;
+    margin: auto;
+    margin-left: 40px;
+    margin-top: 20px !important;
+    margin-bottom: 10px;
+    /* border: 1px solid #000; */
+}
+
+#right-btn{
+    margin-left: 40px;
+}
+
+
+/* / Styles for Extra Small Devices (phones) / */
+@media only screen and (max-width: 576px) {
+    /* / CSS styles for phones / */
+
+    .settingClass{
+        width: 350px;
+    }
+}
+
+
+/* .form-group{
+    margin-left: 1px !important;
+} */

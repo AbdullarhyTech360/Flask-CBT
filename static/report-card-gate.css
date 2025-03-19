@@ -1,0 +1,37 @@
+.container{
+  width: 400px;
+  margin-top: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.254) !important;
+  border-radius: 20px;
+  background: #fff !important;
+}
+
+body{
+  background: linear-gradient(to right, #3e82e7, #8fefe5);
+  /* color: #fff; */
+}
+
+form{
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  background: #fff !important;
+}
+
+label{
+  display: block;
+}
+
+.upper-text{
+  text-align: center;
+  padding-top: 0px !important;
+  margin-top: -1px !important;
+  padding: 5px;
+  font-size: 25px !important;
+  font-weight: bold;
+}
+
+.form-group label{
+  margin-top: 8px;
+  font-weight: bold;
+}

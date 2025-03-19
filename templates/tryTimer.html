@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Count Down</title>
+    </head>
+    <body>
+        <div id="timer"></div>
+        <script>    
+            // Countdown timer in JavaScript
+            function startTimer(duration, display) {
+                var timer = duration, minutes, seconds;
+                setInterval(function () {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+            
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+            
+                    display.textContent = minutes + ":" + seconds;
+            
+                    if (--timer < 0) {
+                        // Trigger an action when the timer reaches zero
+                        // You can make an AJAX request to the Flask backend here
+                        // Example: fetch('/timer_finished', { method: 'POST' });
+                    }
+                }, 1000);
+            }
+            
+            // Start the timer
+            var fiveMinutes = 2 * 5, // 5 minutes
+                display = document.querySelector('#timer');
+            startTimer(fiveMinutes, display);
+        </script>
+    </body>
+</html>

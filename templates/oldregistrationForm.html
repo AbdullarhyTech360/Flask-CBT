@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registeration</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='registrationForm.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='customAlert.css') }}">
+</head>
+<body>
+  <div class="confirm-box" style="display: none;">
+    <h2 id="confirm-h2">Confirmation</h2>
+    <p id="confirm-p">Are you sure you want to submit?</p>
+    <div id="confirm-div">
+        <button onclick="success()" id="confirm-left-btn">Yes</button>
+        <button onclick="ok()" id="confirm-right-btn">Cancel</button>
+    </div>
+  </div>
+  <div class="success-box" style="display: none;">
+      <h2 id="success-h2">Notification</h2>
+      <p id="success-p">Dear user you have submitted successfuully. You are now among the registered users</p>
+      <div id="success-div">
+          <button onclick="cancel()" id="success-btn">Ok</button>
+      </div>
+  </div>
+  <div class="error-box" style="display: none;">
+      <h2 id="error-h2">Error</h2>
+      <p id="error-p">This operation was unsuccessful</p>
+      <div id="error-div">
+          <button onclick="ok()" id="error-btn">Ok</button>
+      </div>
+  </div>
+  <div class="contents" style="width: 80%; margin: auto;">
+     <div class="row">
+      <form action="main_quiz.py" method="post" id="my-form" style="margin-top: 15px;" enctype="multipart/form-data">
+        <div class="mt-3 biodetails">
+          <h3>Biometric Informations</h3>
+          <div class="mt-3 col-10">
+            <label for="Name" class="form-label">First Name</label>
+            <input type="text" id="Name" class="form-control"  placeholder="Enter your first name" name="f_name" required>
+          </div>
+          <div class="mt-3 col-10">
+            <label for="Surname" class="form-label">Surname</label>
+            <input type="text" id="Surname" class="form-control" placeholder="Enter your surname" name="s_name" required>
+          </div>
+          <div class="mt-3 col-10">
+            <label for="MiddleName" class="form-label">Middle Name</label>
+            <input type="text" id="MiddleName" class="form-control" placeholder="Enter your middle name" name="m_name">
+          </div>
+          <div class="form-group mt-3">
+            <select name="gender" id="gender" required>
+              <option value="" selected>Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="none">Rather not say</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="datepicker" class="form-label">Date of birth
+            <input type="date" class="input-group date" id="datepicker" name="dob" required>
+            </label>
+          </div>
+          <div mt-3 class="mt-3">
+            <label for="imageUpload">Upload image</label>
+            <a id="image-id" href="upload">Upload Image</a>
+          </div>
+        </div>
+        <div class="mt-5 acadinfo">
+          <h3>Academic Informations</h3>
+          <div class="form-group mt-3">
+            <select name="userType" id="userType" required>
+              <option value="" disabled selected>User type</option>
+              <option value="Student">Student</option>
+              <option value="Teacher">Staff</option>
+            </select>
+          </div>
+          <div class="form-group mt-3">
+            <select name="classes" id="class" required>
+              <option value="" disabled selected>Select class</option>
+              <option id="classgroup" value="Primary 4">Primary 4</option>
+              <option id="classgroup" value="Primary 5">Primary 5</option>
+              <option id="classgroup" value="Jss 1">Jss 1</option>
+              <option id="classgroup" value="Jss 2">Jss 2</option>
+              <option id="classgroup" value="Jss 3">Jss 3</option>
+            </select>
+          </div>
+          <div class="mt-3 col-10">
+            <label for="regNo" class="form-label">Registration number</label>
+            <input type="number" id="regNo" class="form-control emailcont" placeholder="Your register number in class" name="regno">
+          </div>
+          <div class="mt-3 col-10">
+            <label for="create-password" class="form-label">Create password</label>
+            <input type="password" id="create-password" class="form-control" placeholder="Your password" name="crpass" required>
+          </div>
+          <div class="mt-3 col-10">
+            <label for="confirm-password" class="form-label">Confirm password</label>
+            <input type="password" id="confirm-password" class="form-control" placeholder="Password as above" name="cnpass" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-success my-3 ms-4" id="button">Sign Up</button>
+        <div class="my-3 form-group">
+        Already have account? <a href="/" class="text-primary">Sign in now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='jquery-3.7.1.js')}}"></script>
+  <script type="text/javascript">
+
+    function ok(){
+      document.querySelector(".confirm-box").style.display = "none";
+      document.querySelector(".success-box").style.display = "none";
+      document.querySelector(".error-box").style.display = "none";
+      document.querySelector(".contents").style.opacity = 1
+    }
+
+    function cancel(){
+        document.querySelector(".confirm-box").style.display = "none";
+        document.querySelector(".success-box").style.display = "none";
+        document.querySelector(".error-box").style.display = "none";
+        document.querySelector(".contents").style.opacity = 1
+
+        location.reload();
+    }
+
+    $(document).ready(function () {
+      $("#my-form").submit(function (event) {
+        event.preventDefault();
+
+        const firstName = document.getElementById('Name').value;
+        const surname = document.querySelector('#Surname').value;
+        const classes = document.querySelector('#class').value;
+        const middleName = document.querySelector('#MiddleName').value;
+        const gender = document.querySelector('#gender').value;
+        const dob = document.querySelector('#datepicker').value;
+        // const image = document.querySelector('#imageUpload').value;
+        const regNo = document.querySelector('#regNo').value;
+        let createpassword = document.querySelector('#create-password').value;
+        let confirmpassword = document.querySelector('#confirm-password').value;
+        let userType = document.querySelector("#userType").value;
+        // let fileInput = document.querySelector("#imageUpload");
+        
+        // Get the image file
+        // let image = fileInput.files[0];
+        // let reader = new FileReader();
+        $.ajax({
+          url: "/process_registeration",
+          type: "POST",
+          data: {
+              "firstName": firstName, 
+                "surname": surname, 
+                "middleName": middleName, 
+                "classes": classes,
+                "gender": gender, 
+                "dob": dob, 
+                "regNo": regNo, 
+                "createpassword": createpassword, 
+                "confirmpassword": confirmpassword, 
+                "userType": userType
+          },
+          success: function (response){
+            
+            let objectKey = Object.keys(response)[0];
+            
+            let shownBox = "." + objectKey + "-box";
+            let shownPara = "#" + objectKey + "-p";
+            
+            $(shownBox).show();
+
+            for(let attribute in response) {
+              let value = response[attribute];
+              $(shownPara).text(value);
+            }
+            document.querySelector(".contents").style.opacity = 0.1
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>
