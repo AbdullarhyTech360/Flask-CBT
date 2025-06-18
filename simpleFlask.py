@@ -80,7 +80,7 @@ quest = r"\[2^\frac{8}{3} 2/3 \pi \text{ is equivalent to }\]"
 options = r"\[\frac{{2}}{{7}} \]"
 name = r"\[ 2^3 \text{ is equal to} \]"
 
-from mathematics import bank
+from mathematics import bank  # noqa: E402
 
 quest_lists = bank["banks"]
 

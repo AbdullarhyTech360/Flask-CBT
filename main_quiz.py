@@ -285,6 +285,7 @@ def exams_settings():
 
 @app.route("/assign_role", methods=["POST", "GET"])
 def assign_role():
+    print("admin" in session)
     if "admin" in session:
         teacher_details = fetch_table_details("TEACHERS_DETAILS")
         # print(teacher_details)

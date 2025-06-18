@@ -7,7 +7,7 @@ from quiz_logic import (Admin, check_exist, db_tables, exam_settings,
 
 from flask import (Flask, jsonify, redirect, render_template, request, session,
                    url_for)
-from waitress import serve
+# from waitress import serve
 from my_school import School
 from threading import Lock
 

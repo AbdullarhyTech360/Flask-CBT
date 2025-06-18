@@ -991,8 +991,8 @@ def bio_details(username: str) -> dict:
         "student_class": student_class,
         "session": "2024/2025",
         "term": "first term",
-        "term_ended": "16/12/2024",
-        "new_term_begin": "06/01/2025",
+        "term_ended": "28/03/2025",
+        "new_term_begin": "27/04/2025",
     }
 
     return bio_detail
@@ -1052,7 +1052,7 @@ def position(username: str) -> dict:
             user["full_name"] = full_name
             print(full_name)
             return user
-
+print("78".isascii(), "-".isalnum())
 
 def fetch_result(username: str) -> dict:
     cursor = conn.cursor()
@@ -1075,8 +1075,12 @@ def fetch_result(username: str) -> dict:
 
         if user_score is not None and "ARABIC_LANGUAGE" not in subject:
             for _score in user_score:
-                if type(_score) is int:
-                    total_score += _score
+                if _score != "":
+                    if type(_score) is int or type(_score) is float:
+                        total_score += _score
+                    elif _score.strip().isalnum():
+                        _score = eval(_score.strip())
+                        total_score += _score
 
             user_score = list(user_score)
             # user_score.append(total_score)
@@ -1101,7 +1105,7 @@ def get_result(username: str) -> dict:
 
         big_dict: dict = fetch_result(username)
         small_dict: dict = position(username)
-
+        print(big_dict)
         combine_dict: dict = {"subj_details": big_dict, "main_details": small_dict}
 
         return combine_dict

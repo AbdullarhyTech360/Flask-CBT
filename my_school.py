@@ -10,11 +10,11 @@ class School():
         self.email = "khulafa'u@gmail.com"
         self._session = "2023/2024"
         self.terms = ["first_term", "second_term", "third_term"]
-        self.current_term = self.terms[2]
+        self.current_term = self.terms[1]
         self.term = self.terms[2]
         self.logo = "AlhikmaLogo.jpg"
-        self.term_begin = "16/09/2024"
-        self.term_ended = "31/07/2024"
+        self.term_begin = "27/04/2025"
+        self.term_ended = "28/03/2025"
         self.tests = ["first_ca", "second_ca", "exam", "ppt"]
         self.current_test = self.tests[0]
         self.junior_subjects = ["English_Language", "Mathematics", "Civic_Education", "Agric_Science", "Social_Studies",
