@@ -990,9 +990,9 @@ def bio_details(username: str) -> dict:
         "reg_number": reg_number,
         "student_class": student_class,
         "session": "2024/2025",
-        "term": "first term",
-        "term_ended": "28/03/2025",
-        "new_term_begin": "27/04/2025",
+        "term": "Third term",
+        "term_ended": "28/07/2025",
+        "new_term_begin": "08/09/2025",
     }
 
     return bio_detail
