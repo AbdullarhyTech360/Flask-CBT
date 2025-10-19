@@ -10,3 +10,5 @@ __pycache__/
 
 /School keep
 /.env
+
+/node_modules
