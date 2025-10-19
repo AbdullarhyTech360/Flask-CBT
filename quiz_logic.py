@@ -48,7 +48,8 @@ def take_to_session(
             "CREATE TABLE IF NOT EXISTS CBT_SESSION(USERNAME TEXT, USER_QUESTIONS TEXT, USER_TIME INTEGER, STATUS TEXT, CURRENT_NUMBER INTEGER, CURRENT_SUBJECT TEXT)"
         )
     finally:
-        lock.release()
+        cursor.close()
+        # lock.release()
     # exist = None
     # print(user_questions)
     user_dict = str(user_questions)

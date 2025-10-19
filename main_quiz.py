@@ -411,11 +411,12 @@ def quiz():
         # print(questions, 16278282)
         try:
             cursor = conn.cursor()
-            cursor.execute(f"SELECT * FROM CBT_SESSION WHERE USERNAME=?", (username,))
+            cursor.execute("SELECT * FROM CBT_SESSION WHERE USERNAME=?", (username,))
             user_session = cursor.fetchone()
             status = user_session[3]
             ongoing_questions = eval(user_session[1])
-        except TypeError:
+        except Exception as e:
+            print(e)
             questions = session["questions"]
 
         exam_time = 0
