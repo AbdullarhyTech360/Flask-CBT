@@ -1,0 +1,15 @@
+[project]
+name = "cbt-minischool"
+version = "1.0.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "abdullahi", email = "abdullahimaikidandan@gmail.com"},
+]
+dependencies = ["flask>=3.1.2", "flask-sqlalchemy>=3.1.1", "sqlalchemy>=2.0.44"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
