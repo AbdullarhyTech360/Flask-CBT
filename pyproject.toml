@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "abdullahi", email = "abdullahimaikidandan@gmail.com"},
 ]
-dependencies = ["flask>=3.1.2", "flask-sqlalchemy>=3.1.1", "sqlalchemy>=2.0.44"]
+dependencies = ["flask>=3.1.2", "flask-sqlalchemy>=3.1.1", "sqlalchemy>=2.0.44", "python-dotenv>=1.1.1", "flask-login>=0.6.3"]
 requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
@@ -15,6 +15,6 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
-flask = "python -m flask run --reload"
+flask = "python -m flask run --reload --debug"
 css = "npx tailwindcss -i ./app/static/src/input.css -o ./app/static/dist/output.css --watch"
 dev = "concurrently -n FLASK,TAILWIND -c blue,green \"pdm run flask\" \"pdm run css\""

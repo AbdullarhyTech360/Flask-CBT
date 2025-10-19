@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Mini App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <nav class="bg-blue-600 text-white p-4">
+      <div class="container mx-auto">
+        <a href="{{ url_for('main.index') }}" class="font-bold">Home</a> |
+        <a href="{{ url_for('auth.login') }}">Login</a>
+      </div>
+    </nav>
+
+    <main class="p-6">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
